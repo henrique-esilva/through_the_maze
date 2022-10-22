@@ -2,15 +2,15 @@
 Um jogo simples que fiz. Espero que gostem
 
 observações:
-  para iniciar o jogo, use o arquivo 'main.py'.
+-para iniciar o jogo, use o arquivo 'main.py'.
 
-  é preciso ter o interpretador python instalado e também a biblioteca PyGame
+-é preciso ter o interpretador python instalado e também a biblioteca PyGame
 
-  Recomendo baixar pelo site oficial: python.org , a versão mais recente do python
+-Recomendo baixar pelo site oficial: python.org , a versão mais recente do python
 
-  Não é preciso instalar o PyGame, apenas abra o programa 'CMD' no seu computador e digite
+-Não é preciso instalar o PyGame, apenas abra o programa 'CMD' no seu computador e digite
 
-  pip install pygame
+-pip install pygame
 
 Controles:
   use as setas do teclado para andar
