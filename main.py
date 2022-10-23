@@ -39,7 +39,7 @@ for x in range(22, 28):
         tileset_chao.append([x, y])
 
 tileset_chave = [ [6, 13], [4, 25], [1, 19], [-2, 18], [-2, 28] ]
-tileset_porta = [ [2, 12], [1, 19], [1, 25], [-3, 19], [-6, 24], [12, 26], [14, 26], [16, 26] ]
+tileset_porta = [ [2, 12], [1, 19], [1, 25], [-3, 19], [ 9, 25], [-6, 24], [12, 26], [14, 26], [16, 26] ]
 coracao = [100, 100]
 
 tiros = []
@@ -202,7 +202,7 @@ def controla_com_setas( player ):
             player.posicao[teclas[i][0]] += teclas[i][1]
             if not player.estou_colidindo():
                 pass
-                player.posicao[teclas[i][0]] -= teclas[i][1]
+                #player.posicao[teclas[i][0]] -= teclas[i][1]
 
 class Placa_de_pressao():
     def __init__(self):
