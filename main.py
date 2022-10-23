@@ -37,7 +37,6 @@ for x in range(22, 28):
     for y in range(17, 28):
         tileset_moeda.append([x,y])
         tileset_chao.append([x, y])
-        break
 
 tileset_chave = [ [6, 13], [4, 25], [1, 19], [-2, 18], [-2, 28] ]
 tileset_porta = [ [2, 12], [1, 19], [1, 25], [-3, 19], [ 9, 25], [-6, 24], [12, 26], [14, 26], [16, 26] ]
@@ -337,15 +336,14 @@ class Inimigo2():
         if jogador1.posicao == [4, 10] and self.estagio == 0:
             self.estagio = 1
             for i in range(3):
-                espera( 1000 )
+                espera( 100 )
                 debug()
                 self.posicao[1] += 1
                 preenche_a_tela()
-            espera( 1000 )
+            espera( 200 )
         if self.posicao == [7, 13] and self.estagio == 1:
             self.velocidade = [0, 0]
             self.estagio = 2
-            tileset_chao.append([19, 10])
         if self.estagio == 2 and jogador1.posicao[1] == 10:
             if jogador1.posicao[0] > self.posicao[0] and self.posicao[0] < 8:
                 self.posicao[0] += 1
