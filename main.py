@@ -37,6 +37,7 @@ for x in range(22, 28):
     for y in range(17, 28):
         tileset_moeda.append([x,y])
         tileset_chao.append([x, y])
+        break
 
 tileset_chave = [ [6, 13], [4, 25], [1, 19], [-2, 18], [-2, 28] ]
 tileset_porta = [ [2, 12], [1, 19], [1, 25], [-3, 19], [ 9, 25], [-6, 24], [12, 26], [14, 26], [16, 26] ]
@@ -60,10 +61,20 @@ def pega_chave( personagem ):
     for i in range( len(tileset_chave) ):
         if Rect( tileset_chave[i][0] *tamanho_dos_tiles[0], tileset_chave[i][1] *tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] ).colliderect( personagem.retorna_retangulo() ):
 
+            print(i)
+
             tileset_chave.pop(i)
             tileset_chao.append( tileset_porta[i] )
             tileset_porta.pop(i)
             break
+
+def comportamento_das_moedas():
+    if len( tileset_moeda ) == 0:
+        tileset_chave.append([ 1, 10 ])
+        tileset_moeda.append([ 10, -15])
+    for i in tileset_moeda:
+        if retorna_retangulo( i ).colliderect( jogador1.retorna_retangulo() ):
+            tileset_moeda.remove( i )
 
 def transicao_entre_fases():
     global fase
@@ -163,10 +174,6 @@ def preenche_a_tela():
     pygame.draw.circle( tela_pequena, jogador1.cor, jogador1.retorna_retangulo().center, tamanho_dos_tiles[0] /2, 0 )
 
     for i in tileset_moeda:
-        if retorna_retangulo( i ).colliderect( jogador1.retorna_retangulo() ):
-            tileset_moeda.remove( i )
-
-    for i in tileset_moeda:
         pygame.draw.circle( tela_pequena, ( 255, 200, 51 ), retorna_retangulo( i ).center, tamanho_dos_tiles[0]/4, int(tamanho_dos_tiles[0]/8) )
 
     for i in inimigos:
@@ -202,7 +209,7 @@ def controla_com_setas( player ):
             player.posicao[teclas[i][0]] += teclas[i][1]
             if not player.estou_colidindo():
                 pass
-                #player.posicao[teclas[i][0]] -= teclas[i][1]
+                player.posicao[teclas[i][0]] -= teclas[i][1]
 
 class Placa_de_pressao():
     def __init__(self):
@@ -422,6 +429,7 @@ while True:
             i.comportamento()
     princesa.comportamento()
     jogador1.comportamento()
+    comportamento_das_moedas()
     transicao_entre_fases()
     for i in tiros:
         i.comportamento()
