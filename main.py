@@ -27,19 +27,21 @@ coracao_imagem = pygame.image.load( "tiles\\coracao.png" )
 
 tileset_chao = [
 [1, 1], [1, 2], [2, 1], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [8, 3], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [6, 7], [5, 7], [4, 7], [4, 6], [4, 5], [3, 5], [2, 5], [1, 5], [1, 4], [2, 4], [3, 4], [4, 4], [2, 6], [2, 7], [2, 8], [1, 8], [1, 9], [2, 9], [1, 10], [1, 11], [2, 11], [3, 11], [5, 10], [6, 10], [7, 10], [4, 11], [5, 11], [6, 11], [7, 11], [5, 12], [6, 12], [7, 12], [5, 13], [6, 13], [7, 13], [2, 13], [2, 14],
-[2, 15], [2, 16], [2, 17], [2, 18], [2, 19], [2, 20], [3, 20], [4, 20], [5, 20], [5, 19], [4, 18], [5, 18], [6, 18], [4, 17], [5, 17], [6, 17], [4, 16], [5, 16], [6, 16], [7, 17], [8, 17], [8, 18], [8, 19], [8, 20], [8, 21], [8, 22], [8, 23], [8, 24], [8, 25], [7, 25], [6, 23], [6, 24], [6, 25], [6, 26], [6, 27], [5, 23], [5, 24], [5, 25], [5, 26], [5, 27], [4, 23], [4, 24], [4, 25], [4, 26], [4, 27], [3, 23], [3, 24], [3, 25], [3, 26], [3, 27], [2, 23], [2, 24], [2, 25], [2, 26], [2, 27], [0, 25],
-[-1, 25], [-2, 25], [-3, 25], [-4, 25], [-5, 25], [-6, 25], [-6, 23], [-7, 25], [-8, 25], [-9, 25], [-9, 24], [-9, 23], [-9, 22], [-9, 21], [-9, 20], [-9, 19], [-9, 18], [-8, 18], [-7, 18], [-6, 18], [-5, 18], [-4, 18], [-2, 18], [-3, 18], [-3, 21], [-3, 23], [-3, 25],
-[-9, 28], [-8, 28], [-7, 28], [-6, 28], [-5, 28], [-4, 28], [-3, 28], [-2, 28],
-[10, 25], [11, 25], [12, 25], [13, 25], [14, 25], [15, 25], [16, 25], [17, 25], [18, 25], [20, 25], [21, 25],
-[12, 27], [12, 26], [12, 24], [12, 23], [12, 22], [12, 21], [12, 20], [12, 19], [12, 18], [14, 27], [14, 26], [14, 24], [14, 23], [14, 22], [14, 21], [14, 20], [14, 19], [14, 18], [16, 27], [16, 26], [16, 24], [16, 23], [16, 22], [16, 21], [16, 20], [16, 19], [16, 18], [18, 24], [18, 23], [18, 22], [18, 21]]
+[2, 15], [2, 16], [2, 17], [2, 18], [2, 19], [2, 20], [3, 20], [4, 20], [5, 20], [5, 19], [4, 18], [5, 18], [6, 18], [4, 17], [5, 17], [6, 17], [4, 16], [5, 16], [6, 16], [7, 17], [8, 17], [8, 18], [8, 19], [8, 20], [8, 21], [8, 22], [8, 23], [8, 24], [8, 25], [7, 25], [6, 23], [6, 24], [6, 25], [6, 26], [6, 27], [5, 23], [5, 24], [5, 25], [5, 26], [5, 27], [4, 23], [4, 24], [4, 25], [4, 26], [4, 27], [3, 23], [3, 24], [3, 25], [3, 26], [3, 27], [2, 23], [2, 24], [2, 25], [2, 26], [2, 27], [4, 29],
+[-1, 55],[-2, 55],[-3, 55],[-4, 55],[-5, 55],[-6, 55],[-6, 53],[-7, 55],[-8, 55],[-9, 55],[-9, 54],[-9, 53],[-9, 52],[-9, 51],[-9, 50],[-9, 49],[-9, 48],[-8, 48],[-7, 48],[-6, 48],[-5, 48],[-4, 48],[-2, 48],[-3, 48],[-3, 51],[-3, 53],[-3, 55],[-9, 58],[-8, 58],[-7, 58],[-6, 58],[-5, 58],[-4, 58],[-3, 58],[-2, 58],
+[10, 55],[11, 55],[12, 55],[13, 55],[14, 55],[15, 55],[16, 55],[17, 55],[18, 55],[20, 55],[21, 55],[12, 57],[12, 56],[12, 54],[12, 53],[12, 52],[12, 51],[12, 50],[12, 49],[12, 48],[14, 57],[14, 56],[14, 54],[14, 53],[14, 52],[14, 51],[14, 50],[14, 49],[14, 48],[16, 57],[16, 56],[16, 54],[16, 53],[16, 52],[16, 51],[16, 50],[16, 49],[16, 48],[18, 54],[18, 53],[18, 52],[18, 51],
+[4, 30], [4, 31], [3, 32], [4, 32], [5, 32], [6, 32], [3, 33], [4, 33], [5, 33], [6, 33], [3, 34], [4, 34], [5, 34], [6, 34],    [6, 36], [6, 37], [6, 38], [6, 39], [6, 40],    [5, 39], [5, 40], [3, 40], [3, 39], [3, 38], [3, 37], [3, 36], [4, 36], [4, 39], [4, 40],    [1, 32], [1, 33], [1, 34], [1, 35], [1, 36], [1, 37], [3, 37], [1, 38], [1, 39], [1, 40],    [5, 42], [5, 43], [5, 44],
+[0, 55], [1, 55], [2, 55], [3, 55], [4, 55], [5, 55], [6, 55], [7, 55], [8, 55], [5, 54], [5, 53], [5, 52], [5, 51], [5, 50], [5, 49], [5, 48], [5, 47], [5, 46], [5, 45]
+]
+
 tileset_moeda = []
 for x in range(22, 28):
-    for y in range(17, 28):
+    for y in range(47, 58):
         tileset_moeda.append([x,y])
         tileset_chao.append([x, y])
 
-tileset_chave = [ [6, 13], [4, 25], [1, 19], [-2, 18], [-2, 28] ]
-tileset_porta = [ [2, 12], [1, 19], [1, 25], [-3, 19], [ 9, 25], [-6, 24], [12, 26], [14, 26], [16, 26] ]
+tileset_chave = [ [6, 13], [4, 25], [1, 19], [ 4, 33], [-2, 48], [-2, 58], [4, 36], [1, 40] ]
+tileset_porta = [ [2, 12], [1, 19], [4, 28], [ 6, 35], [-3, 49], [ 9, 55], [1, 35], [5, 41], [-6, 54], [12, 56], [14, 56], [16, 56] ]
 coracao = [100, 100]
 
 tiros = []
@@ -155,7 +157,7 @@ def transicao_entre_fases():
                 for i in tileset_porta:
                     i[1] += 1
                 for i in tileset_moeda:
-                    i[0] += 1
+                    i[1] += 1
                 preenche_a_tela()
 
 def preenche_a_tela():
@@ -213,10 +215,10 @@ def controla_com_setas( player ):
 class Placa_de_pressao():
     def __init__(self):
         self.estado = True
-        self.posicao = [18, 21]
+        self.posicao = [18, 51]
         self.portas = [ [2, 11], [4, 11], [6, 11] ]
         self.estado = True
-        tileset_porta.append([19, 25])
+        tileset_porta.append([19, 55])
     def retorna_retangulo(self):
         return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
     def coloca_portas(self):
@@ -256,7 +258,7 @@ class Placa_de_pressao():
 class Princesa():
     def __init__(self):
         self.cor = ( 210, 0, 210 )
-        self.posicao = [-6, 23]
+        self.posicao = [-6, 53]
     def retorna_retangulo(self):
         return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
     def comportamento(self):
@@ -321,10 +323,10 @@ class Inimigo1():
         self.posicao[0] += self.velocidade[0]
         self.posicao[1] += self.velocidade[1]
 
-class Inimigo2():
+class Inimigo2(): # persgue o jogador na sala final
     def __init__(self):
         self.cor = ( 255, 0, 0 )
-        self.posicao = [ -2, 22 ]
+        self.posicao = [ -2, 52 ]
         self.velocidade = [ 0, 0 ]
 
         self.inicio_e_fim = [ [8, 10], [1, 10], [1, 3], [7, 3], [7, 13], [1, 13] ]
@@ -366,7 +368,7 @@ class Inimigo2():
         self.posicao[0] += self.velocidade[0]
         self.posicao[1] += self.velocidade[1]
 
-class Inimigo3():
+class Inimigo3(): # semelhante a Inimigo1(), mas colide com portas
     def __init__(self):
         self.cor = ( 255, 0, 0 )
         self.posicao = [ 4, 16 ]
@@ -385,6 +387,9 @@ class Inimigo3():
                 break
         self.posicao[0] += self.velocidade[0]
         self.posicao[1] += self.velocidade[1]
+
+        pega_chave(self)
+
         for i in tileset_porta:
             if self.posicao == i:
                 self.posicao[0] -= self.velocidade[0]
@@ -393,25 +398,61 @@ class Inimigo3():
                 self.velocidade[1] = -self.velocidade[1]
                 break
 
+class InimigoPerseguidor():
+    def __init__(self):
+        self.cor = ( 255, 0, 0 )
+        self.posicao = [ 1, 32 ]
+        self.velocidade = [ 0, 0 ]
+    def retorna_retangulo(self):
+        return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
+    def comportamento(self):
+        
+        if jogador1.posicao[1] > self.posicao[1]:
+            self.posicao[1] += 1
+            for i in tileset_porta:
+                if i == self.posicao:
+                    self.posicao[1] -= 1
+        elif jogador1.posicao[1] < self.posicao[1]:
+            self.posicao[1] -= 1
+            for i in tileset_porta:
+                if i == self.posicao:
+                    self.posicao[1] += 1
+
+        if self.posicao[1] < 2:
+            self.posicao[1] = 2
+        if self.posicao[1] > 10:
+            self.posicao[1] = 10
+
+        pega_chave(self)
+
+
 inimigos.append(Inimigo1())
 inimigos.append(Inimigo2())
 inimigo3 = Inimigo3()
-inimigo3.posicao = [12, 18]
+inimigo3.posicao = [12, 48]
 inimigo3.inicio_e_fim = [[2, 3], [2, 12]]
 inimigo3.velocidades = [[0, 1], [0, -1]]
 inimigo4 = Inimigo3()
-inimigo4.posicao = [14, 20]
+inimigo4.posicao = [14, 50]
 inimigo4.velocidade = [0, 1]
 inimigo4.inicio_e_fim = [[4, 3], [4, 12]]
 inimigo4.velocidades = [[0, 1], [0, -1]]
 inimigo5 = Inimigo3()
-inimigo5.posicao = [16, 22]
+inimigo5.posicao = [16, 52]
 inimigo5.velocidade = [0, 1]
 inimigo5.inicio_e_fim = [[6, 3], [6, 12]]
 inimigo5.velocidades = [[0, 1], [0, -1]]
 inimigos.append(inimigo3)
 inimigos.append(inimigo4)
 inimigos.append(inimigo5)
+inimigo6 = Inimigo3()
+inimigo6.posicao = [6, 36]
+inimigo6.velocidade = [0, 1]
+inimigo6.inicio_e_fim = [[6, 2], [6, 10]]
+inimigo6.velocidades =  [[0, 1], [0,-1]]
+inimigos.append(inimigo6)
+inimigos.append(InimigoPerseguidor())
+
 
 placa = Placa_de_pressao()
 jogador1 = Jogador()
