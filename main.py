@@ -1,4 +1,7 @@
+#! python3.8
 import os, sys
+
+# obs.: tive alguns problemas de print na tela ao utilizar a versao 3.11 do python
 
 dirpath = os.getcwd()
 sys.path.append(dirpath)
@@ -17,7 +20,7 @@ tamanho_dos_tiles = [ 32, 32 ]
 tamanho_da_tela_pequena = []
 tamanho_da_tela_grande = []
 
-escala = 1
+escala = 2
 
 for i in range( len(tamanho_da_sala) ):
     tamanho_da_tela_pequena.append( tamanho_da_sala[i] * tamanho_dos_tiles[i] )
@@ -196,8 +199,6 @@ def preenche_a_tela():
     for i in range(2):
         tela_pequena.blit( coracao_imagem, Rect( (coracao[0] +i) * tamanho_dos_tiles[0], coracao[1] * tamanho_dos_tiles[1], 0, 0 ) )
 
-    pega_chave(jogador1)
-
     for i in tileset_porta:
         tela_pequena.blit( tile_porta , Rect( i[0] *tamanho_dos_tiles[0], i[1] *tamanho_dos_tiles[1], 0, 0) )
 
@@ -299,6 +300,7 @@ class Jogador():
     def comportamento(self):
         tecla = pygame.key.get_pressed()
         controla_com_setas( self )
+        pega_chave(self)
 
 class Tiro():
     def __init__(self, pos, direcao):
