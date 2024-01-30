@@ -17,14 +17,10 @@ pygame.init()
 tamanho_da_sala = [ 10, 15 ]
 tamanho_dos_tiles = [ 32, 32 ]
 
-tamanho_da_tela_pequena = []
-tamanho_da_tela_grande = []
-
 escala = 2
 
-for i in range( len(tamanho_da_sala) ):
-    tamanho_da_tela_pequena.append( tamanho_da_sala[i] * tamanho_dos_tiles[i] )
-    tamanho_da_tela_grande.append( tamanho_da_sala[i] * tamanho_dos_tiles[i] * escala )
+tamanho_da_tela_pequena = [tamanho_da_sala[i] * tamanho_dos_tiles[i] for i in range(2)]
+tamanho_da_tela_grande = [tamanho_da_sala[i] * tamanho_dos_tiles[i] * escala for i in range(2)]
 
 tela_pequena = pygame.surface.Surface( tamanho_da_tela_pequena )
 tela_grande = pygame.display.set_mode( tamanho_da_tela_grande )
