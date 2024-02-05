@@ -329,7 +329,7 @@ class Inimigo1():
         self.posicao[0] += self.velocidade[0]
         self.posicao[1] += self.velocidade[1]
 
-class Inimigo2(): # persgue o jogador na sala final
+class Inimigo2(): # persegue o jogador na sala final
     def __init__(self):
         self.cor = ( 255, 0, 0 )
         self.posicao = [ -2, 52 ]
