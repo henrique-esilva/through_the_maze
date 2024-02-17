@@ -11,6 +11,7 @@ if getattr(sys, "frozen", False):
 
 import pygame, math
 from pygame.locals import *
+from map import *
 
 pygame.init()
 
@@ -31,28 +32,6 @@ tile_porta = pygame.image.load( "tiles\\porta.png" )
 chave = pygame.image.load( "tiles\\chave.png" )
 coracao_imagem = pygame.image.load( "tiles\\coracao.png" )
 
-
-tileset_chao = [
-[1, 1], [1, 2], [2, 1], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [8, 3], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [6, 7], [5, 7], [4, 7], [4, 6], [4, 5], [3, 5], [2, 5], [1, 5], [1, 4], [2, 4], [3, 4], [4, 4], [2, 6], [2, 7], [2, 8], [1, 8], [1, 9], [2, 9], [1, 10], [1, 11], [2, 11], [3, 11], [5, 10], [6, 10], [7, 10], [4, 11], [5, 11], [6, 11], [7, 11], [5, 12], [6, 12], [7, 12], [5, 13], [6, 13], [7, 13], [2, 13], [2, 14],
-[2, 15], [2, 16], [2, 17], [2, 18], [2, 19], [2, 20], [3, 20], [4, 20], [5, 20], [5, 19], [4, 18], [5, 18], [6, 18], [4, 17], [5, 17], [6, 17], [4, 16], [5, 16], [6, 16], [7, 17], [8, 17], [8, 18], [8, 19], [8, 20], [8, 21], [8, 22], [8, 23], [8, 24], [8, 25], [7, 25], [6, 23], [6, 24], [6, 25], [6, 26], [6, 27], [5, 23], [5, 24], [5, 25], [5, 26], [5, 27], [4, 23], [4, 24], [4, 25], [4, 26], [4, 27], [3, 23], [3, 24], [3, 25], [3, 26], [3, 27], [2, 23], [2, 24], [2, 25], [2, 26], [2, 27], [4, 29],
-[-1, 55],[-2, 55],[-3, 55],[-4, 55],[-5, 55],[-6, 55],[-6, 53],[-7, 55],[-8, 55],[-9, 55],[-9, 54],[-9, 53],[-9, 52],[-9, 51],[-9, 50],[-9, 49],[-9, 48],[-8, 48],[-7, 48],[-6, 48],[-5, 48],[-4, 48],[-2, 48],[-3, 48],[-3, 51],[-3, 53],[-3, 55],[-9, 58],[-8, 58],[-7, 58],[-6, 58],[-5, 58],[-4, 58],[-3, 58],[-2, 58],
-[10, 55],[11, 55],[12, 55],[13, 55],[14, 55],[15, 55],[16, 55],[17, 55],[18, 55],[20, 55],[21, 55],[12, 57],[12, 56],[12, 54],[12, 53],[12, 52],[12, 51],[12, 50],[12, 49],[12, 48],[14, 57],[14, 56],[14, 54],[14, 53],[14, 52],[14, 51],[14, 50],[14, 49],[14, 48],[16, 57],[16, 56],[16, 54],[16, 53],[16, 52],[16, 51],[16, 50],[16, 49],[16, 48],[18, 54],[18, 53],[18, 52],[18, 51],
-[4, 30], [4, 31], [3, 32], [4, 32], [5, 32], [6, 32], [3, 33], [4, 33], [5, 33], [6, 33], [3, 34], [4, 34], [5, 34], [6, 34],    [6, 36], [6, 37], [6, 38], [6, 39], [6, 40],    [5, 39], [5, 40], [3, 40], [3, 39], [3, 38], [3, 37], [3, 36], [4, 36], [4, 39], [4, 40],    [1, 32], [1, 33], [1, 34], [1, 35], [1, 36], [1, 37], [3, 37], [1, 38], [1, 39], [1, 40],    [5, 42], [5, 43], [5, 44],
-[0, 55], [1, 55], [2, 55], [3, 55], [4, 55], [5, 55], [6, 55], [7, 55], [8, 55], [5, 54], [5, 53], [5, 52], [5, 51], [5, 50], [5, 49], [5, 48], [5, 47], [5, 46], [5, 45]
-]
-
-tileset_moeda = []
-for x in range(22, 28):
-    for y in range(47, 58):
-        tileset_moeda.append([x,y])
-        tileset_chao.append([x, y])
-
-tileset_chave = [ [6, 13], [4, 25], [1, 19], [ 4, 33], [-2, 48], [-2, 58], [4, 36], [1, 40] ]
-tileset_porta = [ [2, 12], [1, 19], [4, 28], [ 6, 35], [-3, 49], [ 9, 55], [1, 35], [5, 41], [-6, 54], [12, 56], [14, 56], [16, 56] ]
-coracao = [100, 100]
-
-tiros = []
-inimigos = []
 
 def retorna_retangulo( arg ):
     return pygame.Rect( arg[0] * tamanho_dos_tiles[0], arg[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
@@ -203,7 +182,6 @@ def preenche_a_tela():
     pygame.display.flip()
     tela_grande.fill( (0, 0, 0) )
 
-
 def controla_com_setas( player ):
     teclas = {K_UP: [1, -1], K_DOWN: [1, +1], K_LEFT: [0, -1], K_RIGHT: [0, +1]}
     velocidade = [[1, -1] , [1, +1] , [0, -1] , [0, +1]]
@@ -216,6 +194,7 @@ def controla_com_setas( player ):
             if not player.estou_colidindo():
                 pass
                 player.posicao[teclas[i][0]] -= teclas[i][1]
+
 
 class Placa_de_pressao():
     def __init__(self):
@@ -260,79 +239,100 @@ class Placa_de_pressao():
                 self.estado = True
                 self.coloca_portas()
 
-class Princesa():
-    def __init__(self):
-        self.cor = ( 210, 0, 210 )
-        self.posicao = [-6, 53]
-    def retorna_retangulo(self):
-        return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
-    def comportamento(self):
 
-        if self.posicao[0] == jogador1.posicao[0] and self.posicao[1] == jogador1.posicao[1]-1:
-            for i in range(8):
-                espera(120)
-                debug()
-                self.posicao[1] -= 1
-                jogador1.posicao[1] -= 1
-                preenche_a_tela()
-            jogador1.posicao = [3, -8]
-            self.posicao = [6, -8]
-            global coracao
-            coracao = [4, -9]
+class Personagem():
+	cor = (0, 0, 0)
+	posicao = [0, 0]
+	def __init__(self, cor=None, posicao=None):
+		self.cor = cor or self.cor
+		self.posicao = posicao or self.posicao
 
-class Jogador():
+
+class Princesa(Personagem):
+	def __init__(self):
+		super().__init__( ( 210, 0, 210 ), [-6, 53] )
+
+	def retorna_retangulo(self):
+		return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
+
+	def comportamento(self):
+		if self.posicao[0] == jogador1.posicao[0] and self.posicao[1] == jogador1.posicao[1]-1:
+			for i in range(8):
+				espera(120)
+				debug()
+				self.posicao[1] -= 1
+				jogador1.posicao[1] -= 1
+				preenche_a_tela()
+			jogador1.posicao = [3, -8]
+			self.posicao = [6, -8]
+			global coracao
+			coracao = [4, -9]
+
+
+class Jogador(Personagem):
     def __init__(self):
         self.demora_do_tiro = 10
-        self.cor = ( 255, 240, 51 )
-        self.posicao = [1, 1]
+        super().__init__( ( 255, 240, 51 ), [1, 1] )
         self.direcao = [1, 1]
+
     def estou_colidindo(self):
         for i in tileset_chao:
             if self.retorna_retangulo().colliderect(Rect(i[0] *tamanho_dos_tiles[0],i[1] *tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1])):
                 return True
         return False
+
     def retorna_retangulo(self):
         return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
+
     def comportamento(self):
         tecla = pygame.key.get_pressed()
         controla_com_setas( self )
         pega_chave(self)
 
+
 class Tiro():
-    def __init__(self, pos, direcao):
-        self.cor = (255, 0, 0)
-        self.posicao = pos
-        self.direcao = direcao
-    def retorna_retangulo(self):
-        return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
-    def comportamento(self):
-        for i in range( 2 ):
-            self.posicao[i] += self.direcao[i]
+	def __init__(self, pos, direcao):
+		self.cor = (255, 0, 0)
+		self.posicao = pos
+		self.direcao = direcao
 
-class Inimigo1():
+	def retorna_retangulo(self):
+		return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
+
+	def comportamento(self):
+		for i in range( 2 ):
+			self.posicao[i] += self.direcao[i]
+
+
+class Inimigo1(Personagem):
+	def __init__(self):
+		super().__init__( ( 255, 0, 0 ), [ 4, 16 ] )
+		self.velocidade = [ 0, 0 ]
+
+		self.inicio_e_fim = [ [4, 1], [6, 1], [6, 3], [4, 3] ]
+		self.velocidades = [ [1, 0], [0, 1], [-1, 0], [0, -1] ]
+
+	def retorna_retangulo(self):
+		return pygame.Rect( math.floor(self.posicao[0]) * tamanho_dos_tiles[0], math.floor(self.posicao[1]) * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
+
+	def comportamento(self):
+		if self.retorna_retangulo().colliderect(jogador1.retorna_retangulo()):
+			sys.exit()
+		for i in range(len(self.inicio_e_fim)):
+			if self.posicao == self.inicio_e_fim[i]:
+				self.velocidade = self.velocidades[i].copy()
+				break
+		self.posicao[0] += self.velocidade[0]
+		self.posicao[1] += self.velocidade[1]
+
+
+class Inimigo2(Personagem): # persegue o jogador na sala final
     def __init__(self):
-        self.cor = ( 255, 0, 0 )
-        self.posicao = [ 4, 16 ]
-        self.velocidade = [ 0, 0 ]
 
-        self.inicio_e_fim = [ [4, 1], [6, 1], [6, 3], [4, 3] ]
-        self.velocidades = [ [1, 0], [0, 1], [-1, 0], [0, -1] ]
-    def retorna_retangulo(self):
-        return pygame.Rect( math.floor(self.posicao[0]) * tamanho_dos_tiles[0], math.floor(self.posicao[1]) * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
-    def comportamento(self):
-        if self.retorna_retangulo().colliderect(jogador1.retorna_retangulo()):
-            sys.exit()
-        for i in range(len(self.inicio_e_fim)):
-            if self.posicao == self.inicio_e_fim[i]:
-                self.velocidade = self.velocidades[i].copy()
-                break
-        self.posicao[0] += self.velocidade[0]
-        self.posicao[1] += self.velocidade[1]
-
-class Inimigo2(): # persegue o jogador na sala final
-    def __init__(self):
-        self.cor = ( 255, 0, 0 )
-        self.posicao = [ -2, 52 ]
+        super().__init__( ( 255, 0, 0 ), [ -2, 52 ] )
+        
+        #self.cor = ( 255, 0, 0 )
+        #self.posicao = [ -2, 52 ]
         self.velocidade = [ 0, 0 ]
 
         self.inicio_e_fim = [ [8, 10], [1, 10], [1, 3], [7, 3], [7, 13], [1, 13] ]
@@ -374,10 +374,11 @@ class Inimigo2(): # persegue o jogador na sala final
         self.posicao[0] += self.velocidade[0]
         self.posicao[1] += self.velocidade[1]
 
-class Inimigo3(): # semelhante a Inimigo1(), mas colide com portas
+class Inimigo3(Personagem): # semelhante a Inimigo1(), mas colide com portas
     def __init__(self):
-        self.cor = ( 255, 0, 0 )
-        self.posicao = [ 4, 16 ]
+        super().__init__( ( 255, 0, 0 ), [ 4, 16 ] )
+        #self.cor = ( 255, 0, 0 )
+        #self.posicao = [ 4, 16 ]
         self.velocidade = [ 0, 0 ]
 
         self.inicio_e_fim = [ [4, 1], [6, 1], [6, 3], [4, 3] ]
@@ -404,13 +405,17 @@ class Inimigo3(): # semelhante a Inimigo1(), mas colide com portas
                 self.velocidade[1] = -self.velocidade[1]
                 break
 
-class InimigoPerseguidor():
-    def __init__(self):
-        self.cor = ( 255, 0, 0 )
-        self.posicao = [ 1, 32 ]
-        self.velocidade = [ 0, 0 ]
+class InimigoPerseguidor(Personagem):
+    def __init__(self, pos=None, vel=None):
+        super().__init__( ( 255, 0, 0 ), pos )
+        #self.cor = ( 255, 0, 0 )
+        #self.posicao = pos or [ 0, 0 ]
+        self.velocidade = vel or [ 0, 0 ]
+        self.limites = [[1, 1], [2, 12]]
+
     def retorna_retangulo(self):
         return pygame.Rect( self.posicao[0] * tamanho_dos_tiles[0], self.posicao[1] * tamanho_dos_tiles[1], tamanho_dos_tiles[0], tamanho_dos_tiles[1] )
+
     def comportamento(self):
         
         if jogador1.posicao[1] > self.posicao[1]:
@@ -423,14 +428,12 @@ class InimigoPerseguidor():
             for i in tileset_porta:
                 if i == self.posicao:
                     self.posicao[1] += 1
-
-        if self.posicao[1] < 2:
-            self.posicao[1] = 2
-        if self.posicao[1] > 10:
-            self.posicao[1] = 10
-
+        for i in range(2):
+            if self.posicao[i] < self.limites[i][0]:
+                self.posicao[i] = self.limites[i][0]
+            if self.posicao[i] > self.limites[i][1]:
+                self.posicao[i] = self.limites[i][1]
         pega_chave(self)
-
 
 inimigos.append(Inimigo1())
 inimigos.append(Inimigo2())
@@ -457,25 +460,49 @@ inimigo6.velocidade = [0, 1]
 inimigo6.inicio_e_fim = [[6, 2], [6, 10]]
 inimigo6.velocidades =  [[0, 1], [0,-1]]
 inimigos.append(inimigo6)
-inimigos.append(InimigoPerseguidor())
+inimigos.append(InimigoPerseguidor([ 1, 32 ],))
 
 
 placa = Placa_de_pressao()
 jogador1 = Jogador()
 princesa = Princesa()
 
-while True:
-    espera()
-    debug()
-    if placa.retorna_retangulo().colliderect( tela_pequena.get_rect() ):
-        placa.comportamento()
+jogador1.posicao = [4, 30]
+
+for j in range(30):
+    #espera()
+    #debug()
+    princesa.posicao[1] -= 1
+    jogador1.posicao[1] -= 1
+    placa.posicao[1] -= 1
+    coracao[1] -= 1
     for i in inimigos:
-        if i.retorna_retangulo().colliderect( tela_pequena.get_rect() ):
-            i.comportamento()
-    princesa.comportamento()
-    jogador1.comportamento()
-    comportamento_das_moedas()
-    transicao_entre_fases()
-    for i in tiros:
-        i.comportamento()
-    preenche_a_tela()
+        i.posicao[1] -= 1
+    for i in tileset_chao:
+        i[1] -= 1
+    for i in tileset_chave:
+        i[1] -= 1
+    for i in tileset_porta:
+        i[1] -= 1
+    for i in tileset_moeda:
+        i[1] -= 1
+    #preenche_a_tela()
+
+def main():
+	while True:
+		espera()
+		debug()
+		if placa.retorna_retangulo().colliderect( tela_pequena.get_rect() ):
+			placa.comportamento()
+		for i in inimigos:
+			if i.retorna_retangulo().colliderect( tela_pequena.get_rect() ):
+				i.comportamento()
+		princesa.comportamento()
+		jogador1.comportamento()
+		comportamento_das_moedas()
+		transicao_entre_fases()
+		for i in tiros:
+			i.comportamento()
+		preenche_a_tela()
+
+main()
