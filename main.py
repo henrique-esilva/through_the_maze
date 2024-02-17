@@ -467,8 +467,9 @@ placa = Placa_de_pressao()
 jogador1 = Jogador()
 princesa = Princesa()
 
-jogador1.posicao = [4, 30]
+# jogador1.posicao = [4, 30]
 
+''' # script de teste
 for j in range(30):
     #espera()
     #debug()
@@ -487,6 +488,7 @@ for j in range(30):
     for i in tileset_moeda:
         i[1] -= 1
     #preenche_a_tela()
+'''
 
 def main():
 	while True:
